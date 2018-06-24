@@ -133,15 +133,23 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <ComboBox x:Name="comboAddEmployee" Margin="30,10,5,0" IsReadOnly="True"
                           SelectedValuePath="Emp_ID" DisplayMemberPath="Nick_Name" ItemsSource="{Binding NicknameList}"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnSRAddEmployee" Margin="10,10,30,0">
+                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnSRAddEmployee" Margin="10,10,5,0">
                         <Viewbox>
                             <TextBlock Text="+" TextWrapping="Wrap" Margin="5"/>
+                        </Viewbox>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnSRRemoveEmployee" Margin="5,10,30,0">
+                        <Viewbox>
+                            <TextBlock Text="-" TextWrapping="Wrap" Margin="5"/>
                         </Viewbox>
                     </Button>
                 </Grid>

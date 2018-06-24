@@ -132,6 +132,27 @@ Class NewSuccessRegister
     End Sub
 
     ''' <summary>
+    ''' By Aevan Camille Batongbacal
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub btnSRRemoveEmployee_Click(sender As Object, e As RoutedEventArgs) Handles btnSRRemoveEmployee.Click
+        e.Handled = True
+        If txtSRWhosInvolve.Text = String.Empty Then
+            txtSRWhosInvolve.Text += comboAddEmployee.Text
+        Else
+            Dim txtBox As String = txtSRWhosInvolve.Text
+            Dim cbBox As String = comboAddEmployee.Text
+            Dim ifYes As Integer = txtBox.IndexOf(cbBox)
+            If ifYes = -1 Then
+                'txtSRWhosInvolve.Text += ", " + comboAddEmployee.Text
+                txtSRWhosInvolve.Text = txtBox.Remove(ifYes, cbBox.Length - 1)
+            Else
+                MsgBox("Cannot Allow Duplicate Entry!", MsgBoxStyle.Exclamation, "AIDE")
+            End If
+        End If
+    End Sub
+
+    ''' <summary>
     ''' By Krizza Tolento
     ''' </summary>
     ''' <remarks></remarks>

@@ -8,7 +8,7 @@ Imports System.Windows.Threading
 Class MainWindow
     Implements IAideServiceCallback
 
-    Public email As String = "a.batongbacal@ph.fujitsu.com"
+    Public email As String
     Private departmentID As Integer
     Private empID As Integer
     Private permission As Integer
@@ -98,6 +98,11 @@ Class MainWindow
         'profile = New Profile
         'profile.Emp_ID = 173692
         'profile.Dept_ID = 1
+        getTime()
+        email = "a.batongbacal@ph.fujitsu.com"
+        SignOn()
+        MsgBox("Welcome " & email, MsgBoxStyle.Information, "AIDE")
+        SetEmployeeData()
         attendance()
     End Sub
 
