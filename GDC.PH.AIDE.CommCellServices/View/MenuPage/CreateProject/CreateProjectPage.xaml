@@ -1,0 +1,414 @@
+﻿<Page x:Class="CreateProjectPage"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"          
+      mc:Ignorable="d"
+      Title="CreateProjectPage"
+      Height="auto" Width="auto">
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalGridLinesBrush" Value="White"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="White"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="SteelBlue"/>
+            <Setter Property="Opacity" Value=".9"/>
+            <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#FF303030"/>
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                           Value="True">
+                    <Setter Property="Background"
+                               Value="DimGray" />
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="SteelBlue" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="DimGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PagebuttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="SteelBlue"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="Gainsboro" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="SteelBlue" Opacity=".8">
+            <Viewbox HorizontalAlignment="Left">
+                <TextBlock TextWrapping="Wrap" Padding="10,0,0,0" Text="Create/Update Project" Margin="10" Foreground="White"/>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="1" Background="White" Opacity=".9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Viewbox>
+                        <TextBlock TextWrapping="Wrap" Text="Search Project ID" Margin="20,18,10,18" Foreground="#FF303030" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Stretch">
+
+                    <TextBox x:Name="txtSearch" TextWrapping="Wrap" Margin="0,15,200,15" Width="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+        <Grid Grid.Row="2" Background="White" Opacity=".9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Margin="30,30,10,150" CornerRadius="0" BorderThickness="1,1,1,1">
+                        <Border.BorderBrush>
+                            <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing Brush="SteelBlue">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.BorderBrush>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".5*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1.2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Viewbox>
+                                    <Label x:Name="lblProjIdValidation" Margin="10,15,10,0" Foreground="Red"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <TextBox x:Name="txtProjID" TextWrapping="Wrap" Margin="30,10,30,5" Text="{Binding ACTION_MESSAGE, Mode=TwoWay}" MaxLines="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Viewbox>
+                                    <TextBlock Text="(Project ID)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <TextBox x:Name="txtProjName" TextWrapping="Wrap" Margin="30,10,30,5" Text="{Binding ACTION_MESSAGE, Mode=TwoWay}" MaxLines="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Viewbox>
+                                    <TextBlock Text="(Project Name)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <ComboBox x:Name="cbCategory" Margin="30,10,30,5">
+                                    <ComboBoxItem Content="Project"/>
+                                    <ComboBoxItem Content="Task"/>
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Row="6">
+                                <Viewbox>
+                                    <TextBlock Text="(Category)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="7">
+                                <ComboBox x:Name="cbBillability" Margin="30,10,30,5">
+                                    <ComboBoxItem Content="Internal"/>
+                                    <ComboBoxItem Content="External"/>
+                                </ComboBox>
+                            </Grid>
+                            <Grid Grid.Row="8">
+                                <Viewbox>
+                                    <TextBlock Text="(Billability)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+
+                            <Grid Grid.Row="9">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnCreate" Margin="30,10,5,20" >
+                                        <Viewbox Width="49" HorizontalAlignment="Center">
+                                            <TextBlock Text="Create"  TextWrapping="Wrap" Margin="5"/>
+                                        </Viewbox>
+                                    </Button>
+                                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnUpdate" Margin="30,10,5,20" Visibility="Hidden">
+                                        <Viewbox>
+                                            <TextBlock Text="Update"  TextWrapping="Wrap" Margin="5"/>
+                                        </Viewbox>
+                                    </Button>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Button Style="{DynamicResource buttonStyle}" x:Name="btnNewProject" Margin="5,10,30,20">
+                                        <Viewbox>
+                                            <TextBlock Text="Clear" TextWrapping="Wrap" Margin="5"/>
+                                        </Viewbox>
+                                    </Button>
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1">
+
+                </Grid>
+                
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <DataGrid  x:Name="dgProjectList" ItemsSource="{Binding ProjectList}" BorderBrush="Transparent" Margin="10,30,30,0" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Project ID" Binding="{Binding ProjectID}" Width="1*"/>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Project Name" Binding="{Binding ProjectName}" Width="2*"/>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Category" Binding="{Binding Category}" Width="1*"/>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Billability" Binding="{Binding Billability}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="15,0,30,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button Name="btnFirst" Click="btnFirst_Click" Style="{StaticResource PagebuttonStyle}"                                        
+                                            Width="auto" Height="auto">
+                                <Viewbox>
+                                    <TextBlock Text="&lt;&lt;" TextWrapping="Wrap"  Margin="5"/>
+                                </Viewbox>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1">
+
+                            <Button Name="btnPrev" Click="btnPrev_Click" Style="{StaticResource PagebuttonStyle}" 
+                                            Width="auto" Height="auto">
+                                <Viewbox>
+                                    <TextBlock Text="&lt;" TextWrapping="Wrap"  Margin="5"/>
+                                </Viewbox>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Viewbox>
+                                <Label Name="lblPageNo" Margin="5"
+                                           VerticalAlignment="Center" FontWeight="Bold" Foreground="DimGray"/>
+
+                            </Viewbox>
+                        </Grid>
+                        <Grid Grid.Column="3">
+
+                            <Button Name="btnNext" Click="btnNext_Click" Style="{StaticResource PagebuttonStyle}" 
+                                            Width="auto" Height="auto">
+                                <Viewbox>
+                                    <TextBlock Text="&gt;" TextWrapping="Wrap"  Margin="5"/>
+                                </Viewbox>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="4">
+
+                            <Button Name="btnLast" Click="btnLast_Click" Style="{StaticResource PagebuttonStyle}"
+                                            Width="auto" Height="auto">
+                                <Viewbox>
+                                    <TextBlock Text="&gt;&gt;" TextWrapping="Wrap"  Margin="5"/>
+                                </Viewbox>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+        
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="17*" />
+            <RowDefinition Height="75*" />
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="SteelBlue" >
+           
+                <TextBlock x:Name="tbEmployee" Style="{DynamicResource textblockStyle}" FontSize="25" Margin="0,0,5,13">PROJECTS</TextBlock>
+ 
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid Margin="0,10,10,0">
+                <Label Style="{StaticResource labelStyle }" Margin="0,0,250,0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Search Project ID: " />
+                <TextBox x:Name="txtSearch" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="110,0,0,0" Width="250"/>
+                <Button Margin="5,0,0,5" Style="{DynamicResource buttonStyle}" Content="Clear Fields" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="btnNewProject"/>
+            </Grid>
+            <Grid Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">                
+                <Label x:Name="lblProjIdValidation" Foreground="red" Margin="0,10,150,0" Style="{StaticResource labelStyle}"  Height="28" HorizontalAlignment="center" VerticalAlignment="Top"/>
+                <Label Margin="5,43,0,0" Style="{StaticResource labelStyle}" Content="Project ID: " Height="28" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtProjID" Margin="80,45,0,0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Margin="205,43,0,0" Style="{StaticResource labelStyle}" Content="Project Name: " Height="28" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtProjName" Margin="300,45,0,0" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Margin="630,43,0,0" Style="{StaticResource labelStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Category: " Height="28"/>
+                <ComboBox x:Name="cbCategory" Grid.Row="0"  Margin="700,45,0,0" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22">
+                    <ComboBoxItem Content="Project"/>
+                    <ComboBoxItem Content="Task"/>
+                </ComboBox>
+                <Label Margin="830,43,0,0" Style="{StaticResource labelStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Billability: " Height="28"/>
+                <ComboBox x:Name="cbBillability" Margin="900,45,0,0" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22">
+                    <ComboBoxItem Content="Internal"/>
+                    <ComboBoxItem Content="External"/>
+                </ComboBox>
+                <Button Margin="1055,35,10,0" Content="Create Project" x:Name="btnCreate"/>
+                <Button Margin="1055,35,10,0" Content="Update Project" x:Name="btnUpdate" Visibility="Hidden" />
+            </Grid>
+        </Grid>
+        <Grid  HorizontalAlignment="Stretch" Grid.Row="2" >
+            <Grid>
+                <Label x:Name="lblPagingInfo" Margin="10,0,0,10" FontWeight="Bold"/>
+            </Grid >
+            <DataGrid  x:Name="dgProjectList" ItemsSource="{Binding ProjectList}" Margin="10,30,10,75">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="SystemColors.HighlightBrushKey" Color="DimGray" Opacity="0.5" />
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Project ID" Binding="{Binding ProjectID}" Width="20*"/>
+                    <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Project Name" Binding="{Binding ProjectName}" Width="40*"/>
+                    <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Category" Binding="{Binding Category}" Width="20*"/>
+                    <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Billability" Binding="{Binding Billability}" Width="20*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <StackPanel Grid.Row="2" Margin="20" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom"  >
+            <Button Name="btnFirst" FontSize="12" Click="btnFirst_Click" Width="30" Height="30" Margin="0,0,10,0" >
+                
+            </Button>
+            <Button Name="btnPrev" FontSize="12" Click="btnPrev_Click" Width="30" Height="30" Margin="0,0,10,0" >
+                
+            </Button>
+            <Label Name="lblPageNo" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Button Name="btnNext" FontSize="12" Click="btnNext_Click"  Width="30" Height="30" Margin="0,0,10,0">
+               
+            </Button>
+            <Button Name="btnLast" FontSize="12" Click="btnLast_Click" Width="30" Height="30" Margin="0,0,10,0" >
+                
+           
+            </Button>
+        </StackPanel>-->
+    </Grid>
+</Page>

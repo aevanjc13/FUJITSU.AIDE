@@ -1,0 +1,423 @@
+﻿<Page x:Class="NewProject"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="auto" Height="auto"
+      Title="NewProject">
+    <Page.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            
+            <Setter Property="Background"  Value="SteelBlue" />
+            <Setter Property="Foreground"  Value="WHITE" />
+     
+            <Setter Property="FontSize"  Value="15" />
+            <Setter Property="Height"  Value="50" />
+            <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"></Setter>
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalGridLinesBrush" Value="White"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="White"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="SteelBlue"/>
+            <Setter Property="Opacity" Value=".9"/>
+            <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#FF303030"/>
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                           Value="True">
+                    <Setter Property="Background"
+                               Value="DimGray" />
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="SteelBlue" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="DimGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PagebuttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="SteelBlue"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="Gainsboro" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style TargetType="{x:Type ListView}">
+ 
+
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+        <Style TargetType="{x:Type ListViewItem}">
+            
+            <Setter Property="Foreground" Value="Black"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="true" >
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="Black" />
+                    
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="DimGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+      
+
+
+    </Page.Resources>
+  
+    <Grid Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+   
+     
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="SteelBlue" Opacity=".8">
+            <Viewbox HorizontalAlignment="Left">
+                <TextBlock TextWrapping="Wrap" Padding="10,0,0,0" Text="Assign Project" Margin="10" Foreground="White"/>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="1" Background="White" Opacity=".9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Margin="30,30,10,250" CornerRadius="0" BorderThickness="1,1,1,1">
+                        <Border.BorderBrush>
+                            <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing Brush="SteelBlue">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.BorderBrush>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".3*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height=".4*"/>
+                                <RowDefinition Height=".3*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid Grid.Row="1">
+                                <ComboBox x:Name="cbProjectName" Margin="30,10,30,5"
+                                          IsEditable="True" IsReadOnly="True" Text="Select Project" 
+                                          ItemsSource="{Binding ProjectList}" DisplayMemberPath="ProjectName" 
+                                          SelectedValue="{Binding SelectedProject}"
+                                          SelectedValuePath="ProjectID"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Viewbox>
+                                    <TextBlock Text="(Project Name)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <TextBox Text="{Binding SelectedProject.ProjectID}" TextWrapping="Wrap" Margin="30,10,30,5" 
+                                         MaxLines="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Viewbox>
+                                    <TextBlock Text="(Project ID)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <TextBox IsEnabled="False" Text="{Binding SelectedProject.Category}" TextWrapping="Wrap" Margin="30,10,30,5" 
+                                         MaxLines="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="6">
+                                <Viewbox>
+                                    <TextBlock Text="(Category)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+                            <Grid Grid.Row="7">
+                                <TextBox IsEnabled="False" Text="{Binding SelectedProject.Billability}" TextWrapping="Wrap" Margin="30,10,30,5" 
+                                         MaxLines="255" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="8">
+                                <Viewbox>
+                                    <TextBlock Text="(Billability)" Margin="10,0,10,5" TextWrapping="Wrap" Foreground="DimGray"/>
+                                </Viewbox>
+                            </Grid>
+
+                            <Grid Grid.Row="9">
+                                
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <ListView ItemsSource="{Binding EmployeeLists}" SelectedItem="{Binding SelectedEmployees}" Margin="5,30,5,0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="250"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Button Style="{DynamicResource buttonStyle}" Command="{Binding AddCommand}" IsEnabled="{Binding AddMode}" x:Name="btnAdd" Margin="5,5,5,30" >
+                            <Viewbox>
+                                <TextBlock Text="Add" TextWrapping="Wrap" Margin="5"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <ListView ItemsSource="{Binding AssignedEmployeeLists}" SelectedItem="{Binding SelectedAssignedEmployees}" Margin="10,30,30,0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="170"/>
+                                <GridViewColumn Header="Start Date" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker Width="auto" SelectedDate="{Binding DateStarted}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="End Date" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DatePicker Width="auto" SelectedDate="{Binding DateFinished}"  />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width="1.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Button Style="{DynamicResource buttonStyle}" Command="{Binding ClearCommand}" IsEnabled="{Binding ClearMode}" Margin="10,5,10,30" >
+                            <Viewbox>
+                                <TextBlock Text="Clear" TextWrapping="Wrap" Margin="5"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Style="{DynamicResource buttonStyle}" Command="{Binding RemoveCommand}" IsEnabled="{Binding RemoveMode}"  Margin="10,5,10,30" >
+                            <Viewbox>
+                                <TextBlock Text="Remove" TextWrapping="Wrap" Margin="5"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button Style="{DynamicResource buttonStyle}" Command="{Binding CreateCommand}"  Margin="150,5,30,30" >
+                            <Viewbox Margin="0,0,28,0">
+                                <TextBlock Text="Create" TextWrapping="Wrap" Margin="5"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+      
+
+
+
+
+
+        <!--<Label HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource Header}" Content="C r e a t e  P r o j e c t" Width="235" Grid.Row="0" Margin="0,-2,565,11" Height="32"/>
+
+
+        <Label Style="{StaticResource TextField}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,6,0,0" Content="Project Name" Height="28" Grid.Row="1" Width="96"/>
+        <ComboBox x:Name="cbProjectName"  IsEditable="True" IsReadOnly="True" Text=" Select Project " ItemsSource="{Binding ProjectList}" DisplayMemberPath="ProjectName" SelectedValue="{Binding SelectedProject}"
+                               SelectedValuePath="ProjectID"  Margin="100,9,0,0" Width="165" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label Style="{StaticResource TextField}" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="287,8,0,0" Content="ID" Width="33" Grid.Row="1"/>
+        <TextBox Background="LightGray" Text="{Binding SelectedProject.ProjectID}" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="320,9,0,0" Width="48" Grid.Row="1" RenderTransformOrigin="0.527,0.522" />
+        <Label Style="{StaticResource TextField}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,7,0,0" Content="Category" Height="26" Width="66"/>
+        <TextBox 
+             Background="LightGray"
+             Grid.Row="1"  Margin="455,9,0,0" Width="105" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding SelectedProject.Category}"  VerticalAlignment="Top" Height="22">
+        </TextBox>
+        <Button x:Name="btnCreate" Style="{StaticResource FunctionButton}" Content="C R E A T E" Command="{Binding CreateCommand}" HorizontalAlignment="Center" Margin="536,249,184,81" Width="80" Grid.Row="2" />
+
+       
+        <Grid Grid.Row="1" Margin="10,68,10,81" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+
+          
+            <StackPanel Grid.Column="0">
+                <Label BorderBrush="White" BorderThickness="2" Height="30" Content="All Employees" Background="#FFB00800" Foreground="White" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <ListView ItemsSource="{Binding EmployeeList}" SelectedItem="{Binding SelectedEmployee}" Height="285" Width="200">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="190"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </StackPanel>
+
+
+       
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="81" Margin="0,136,4,136">
+                <Button x:Name="btnAdd" Style="{StaticResource FunctionButton}" Command="{Binding AddCommand}" IsEnabled="{Binding AddMode}" Content="A D D" Width="80" Margin="5,2,5,2" />
+                <Button Style="{StaticResource FunctionButton}" Command="{Binding RemoveCommand}" IsEnabled="{Binding RemoveMode}" Content="R E M O V E" Width="80" Margin="5,2,5,2"/>
+                <Button Style="{StaticResource FunctionButton}" Command="{Binding ClearCommand}" IsEnabled="{Binding ClearMode}" Content="C L E A R" Width="80" Margin="5,2,5,2"/>
+            </StackPanel>
+
+           
+            <StackPanel Grid.Column="2">
+                <Label BorderBrush="White" BorderThickness="2" FontWeight="Bold" Style="{StaticResource TextField}" Content="Assigned to Project" Background="#FFB00800" Foreground="White" Margin="0,0,1,0" Height="30"/>
+                <ListView ItemsSource="{Binding AssignedEmployeeList}" SelectedItem="{Binding SelectedAssignedEmployee}" Height="286">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="130"/>
+                            <GridViewColumn Header="Start Date" Width="157">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker Width="145" SelectedDate="{Binding DateStarted}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="End Date" Width="157">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker Width="145" SelectedDate="{Binding DateFinished}"  />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <TextBox
+            Background="LightGray"
+            Grid.Row="1"  Margin="650,9,0,0" Width="121" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding SelectedProject.Billability}" VerticalAlignment="Top" Height="22">
+        </TextBox>
+        <Label Style="{StaticResource TextField}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="585,8,0,0" Content="Billability " Height="26" Width="66"/>
+        <Button Content="ADD NEW" HorizontalAlignment="Left" Margin="681,17,0,0" VerticalAlignment="Top" Width="75"/>-->
+
+
+    </Grid>
+</Page>

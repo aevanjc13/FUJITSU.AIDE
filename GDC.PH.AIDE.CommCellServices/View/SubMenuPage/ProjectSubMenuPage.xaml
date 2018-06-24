@@ -1,0 +1,64 @@
+﻿<Page x:Class="ProjectSubMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+     Height="auto" Width="auto"
+      Title="ProjectSubMenuPage">
+    <Grid Opacity=".7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin=".5">
+            <Button Name="CreateProject" Margin="0" Style="{DynamicResource buttonStyleImproveSubMenu}" Click="CreateProject_Click">
+                <Viewbox>
+                    <TextBlock Text="Create Projects" Style="{DynamicResource textblockStyleImproveSubMenu}"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="1" Margin=".5">
+            <Button Name="AssignedProject" Margin="0" Style="{DynamicResource buttonStyleImproveSubMenu}" Click="AssignedProject_Click" >
+                <Viewbox>
+                    <TextBlock Text="Assign Projects" Style="{DynamicResource textblockStyleImproveSubMenu}"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+      
+    </Grid>
+
+    <Page.Resources>
+        <Style x:Key="buttonStyleImproveSubMenu" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="SteelBlue" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DimGray" />
+                    <Setter Property="Margin" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="textblockStyleImproveSubMenu" TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="15" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Page.Resources>
+</Page>
+

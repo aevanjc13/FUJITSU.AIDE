@@ -1,0 +1,429 @@
+﻿<Page x:Class="ThreeC_UpdatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+     Height="auto" Width="auto"
+      Title="ThreeC_UpdatePage">
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalGridLinesBrush" Value="White"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="White"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="SteelBlue"/>
+            <Setter Property="Opacity" Value=".9"/>
+            <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#FF303030"/>
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                           Value="True">
+                    <Setter Property="Background"
+                               Value="DimGray" />
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ColumnElementStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="SteelBlue" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="DimGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PagebuttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="SteelBlue"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Width" Value="auto" />
+            <Setter Property="Height" Value="auto" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="Gainsboro" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+   
+        <Grid Margin="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"  Background="SteelBlue" Opacity=".8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Padding="10,0,0,0" Text="Update 3C" Margin="10" Foreground="White"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Column="1">
+                <Button Name="BackBtn" Margin="400,0,0,0" Style="{DynamicResource buttonStyle}" Click="btnBackClick">
+                    <Viewbox>
+                        <TextBlock Text="Back"  Foreground="White" Margin="10"/>
+                    </Viewbox>
+                </Button>
+                </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="White" Opacity=".9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" ShowGridLines="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height=".5*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Margin="30,20,30,15" CornerRadius="5" BorderThickness="3,3,3,3">
+                        <Border.BorderBrush>
+                            <DrawingBrush Viewport="0,0,10,10" ViewportUnits="Absolute" TileMode="Tile">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing Brush="DimGray">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <RectangleGeometry Rect="0,0,50,50"/>
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+
+                                                    <RectangleGeometry Rect="50,50,50,50"/>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.BorderBrush>
+                        <Viewbox>
+
+                            <TextBlock TextWrapping="Wrap" Margin="10" 
+                                   x:Name="txtRefID" Text="{Binding SelectedConcern.REF_ID, Mode=TwoWay}"/>
+                        </Viewbox>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1">
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height=".4*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height=".4*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height=".4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".4*"/>
+                        <RowDefinition Height="1.2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <TextBox Text="{Binding SelectedConcern.CONCERN, Mode=TwoWay}" 
+                             TextWrapping="Wrap" Margin="30,10,30,0"
+                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Viewbox>
+                            <TextBlock Text="(Concern)" Margin="10,0,10,0" TextWrapping="Wrap" Foreground="DimGray"/>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <TextBox Text="{Binding SelectedConcern.CAUSE, Mode=TwoWay}" 
+                             Margin="30,10,30,0" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Viewbox>
+                            <TextBlock Text="(Cause)" Margin="10,0,10,0" TextWrapping="Wrap" Foreground="DimGray"/>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <TextBox Text="{Binding SelectedConcern.COUNTERMEASURE, Mode=TwoWay}" 
+                             Margin="30,10,30,0" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Viewbox>
+                            <TextBlock Text="(Countermeasure)" Margin="10,0,10,0" TextWrapping="Wrap" Foreground="DimGray"/>
+                        </Viewbox>
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <DatePicker Text="{Binding SelectedConcern.DUE_DATE, Mode=TwoWay}" 
+                                Margin="30,10,30,0"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <Viewbox>
+                            <TextBlock Text="(Due Date)" Margin="10,0,10,0" TextWrapping="Wrap" Foreground="DimGray"/>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <Button Style="{DynamicResource buttonStyle}" Margin="30,10,30,10"
+                                x:Name="btnReload"  Click="btnSaveClick" >
+                            <Viewbox>
+                                <TextBlock Text="Update" TextWrapping="Wrap" Margin="5"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Column="1" Margin="0,0,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height=".5*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,20,0,0">
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Text="My Action Reference" Margin="0,10,0,10" Foreground="SteelBlue"/>
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <DataGrid AutoGenerateColumns="False" x:Name="lv" Margin="0" 
+                      Width="auto" BorderBrush="Transparent" 
+                      ItemsSource="{Binding ListOfActionInConcern}" 
+                      SelectedItem="{Binding GetSelectedAction}"
+                      SelectedValuePath="Key">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Ref. No." Width="1*" Binding="{Binding ACTREF}" IsReadOnly="True"/>
+                            <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Action Ref."  Width="1*" Binding="{Binding ACTION_REFERENCES}" IsReadOnly="True"/>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--<ListView x:Name="lv" ItemsSource="{Binding ListOfActionInConcern}" Foreground="Black" SelectedItem="{Binding GetSelectedAction}"  SelectedValuePath="Key" Width="auto"  >
+                        <ListView.View>
+                            <GridView>
+
+                                <GridViewColumn Header="Ref No." DisplayMemberBinding="{Binding ACTREF}"   Width="auto"/>
+                                <GridViewColumn Header="Action References" DisplayMemberBinding="{Binding ACTION_REFERENCES}"   Width="auto"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>-->
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Button Style="{DynamicResource buttonStyle}" Margin="200,7,0,7" Click="btnRemoveSelectedAction">
+                        <Viewbox>
+                            <TextBlock Text="Remove" TextWrapping="Wrap" Margin="5"/>
+                        </Viewbox>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" Margin="15,0,30,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height=".5*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Viewbox HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" Text="Search" Margin="0,10,0,10" Foreground="DimGray"/>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox x:Name="txtSearchAction" Margin="0,8,2,8"
+                                HorizontalContentAlignment="Center"/>
+                    </Grid>
+                    
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Viewbox HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" Text="All Action Reference" Margin="0,10,0,10" Foreground="SteelBlue"/>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid AutoGenerateColumns="False" x:Name="lvACtion" Margin="0" 
+                      Width="auto" BorderBrush="Transparent" 
+                      ItemsSource="{Binding listAction}" 
+                      SelectedItem="{Binding GetSelectedAction}"
+                      SelectedValuePath="Key">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn ElementStyle="{StaticResource ColumnElementStyle}" Header="Action Message"  Width="1*" Binding="{Binding ACT_MESSAGE}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Button Style="{DynamicResource buttonStyle}" Margin="200,7,0,7" Click="btnSaveActionRef">
+                        <Viewbox>
+                            <TextBlock Text="Add" TextWrapping="Wrap" Margin="5"/>
+                        </Viewbox>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="469*"/>
+                    <ColumnDefinition Width="220*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="68*"/>
+                    <RowDefinition Height="73*"/>
+                    <RowDefinition Height="86*"/>
+                    <RowDefinition Height="37*"/>
+                    <RowDefinition Height="59*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Column="1" Grid.Row="1" Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Foreground="DimGray" Margin="5,5,5,5" Width="200"  VerticalAlignment="Center"  FontSize="12" HorizontalAlignment="Center" Grid.ColumnSpan="2" >MY LIST OF ACTION REFERENCES</TextBlock>
+                </Grid>
+
+
+                <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="5">
+
+
+                    <Border BorderBrush="#7a878c" BorderThickness="4" Margin="5,5,20,5">
+                        
+                    </Border>
+                </Grid>
+
+
+
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="2" ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32*"/>
+                    <RowDefinition Height="28*"/>
+                    <RowDefinition Height="237*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Margin="5,5,5,5"  Background="SteelBlue" FontSize="17"  Text="ADD ACTION REFERENCE(S) "  Foreground="White" Width="290"/>
+                <Border  BorderThickness="4" BorderBrush="#7a878c" Grid.RowSpan="3">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31*"/>
+                    <RowDefinition Height="36*"/>
+                    <RowDefinition Height="183*"/>
+                    <RowDefinition Height="47*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="146*"/>
+                        <ColumnDefinition Width="115*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Label HorizontalAlignment="Right"  Content="Search Action Reference:" Foreground="black" Height="Auto" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <!--<ListView x:Name="lvACtion" ItemsSource="{Binding listAction}" SelectedItem="{Binding GetSelectedAction}" Foreground="Black"  SelectedValuePath="Key" Margin="6,6,6,6">
+                        <ListView.View>
+                            <GridView>
+
+                                <GridViewColumn Header="Reference #" DisplayMemberBinding="{Binding ACTREF }"   Width="auto"></GridViewColumn>
+                                <GridViewColumn Header="Action List" DisplayMemberBinding="{Binding ACT_MESSAGE}"   Width="auto"></GridViewColumn>
+                                <GridViewColumn Header="Due Date" DisplayMemberBinding="{Binding DUE_DATE,  StringFormat=\{0:dd-MM-yyyy \}}"   Width="auto"></GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>-->
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+  
+</Page>
